@@ -1,12 +1,12 @@
 import React from "react";
-import ConnectWallet from "../services/connectWallet";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const Home = () => {
     return(
         <>
-            {/* <h1>Home Page</h1> */}
             <div>
-                <ConnectWallet/>
+                <h1>Home Page</h1>
+                <ConnectButton/>
             </div>
         </>
     );

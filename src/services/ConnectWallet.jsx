@@ -5,6 +5,7 @@ import { ethers } from "ethers";
 const ConnectWallet = () => {
     const [account, setAccount] = useState(null);
     const isWalletConnected = Boolean(account);
+    
     const walletConnect = async () => {
         if(window.ethereum){
             try{
@@ -13,9 +14,6 @@ const ConnectWallet = () => {
                 });
                 setAccount(accounts[0]);
                 console.log("Connect A/C: ", accounts[0]);
-                console.log(isWalletConnected);
-                // getBalance();
-                
             }catch(error){
                 console.error("Error", error);
             }
@@ -46,11 +44,20 @@ const ConnectWallet = () => {
     // }, []);
 
     return (
-    <>
+        <>
         <div className="bg-gray-900 m-5 rounded-lg py-3 flex flex-col items-center">
-            <p>CONNECT YOUR METAMASK WALLET</p>
+            {account ? (
+                <h3 className="mt-2">{account}</h3>
+            ) : (
+                <div className="flex flex-col items-center">
+                    <p>CONNECT YOUR METAMASK WALLET</p>
+                    <button onClick={walletConnect} className="mt-5 w-20 h-10 rounded-lg bg-white text-black">Connect</button>
+                </div>
+            )}
+
+            {/* <p>CONNECT YOUR METAMASK WALLET</p>
             <button onClick={walletConnect} className="mt-5 w-20 h-10 rounded-lg bg-white text-black">Connect</button>
-            <h3 className="mt-2">{account}</h3>
+            <h3 className="mt-2">{account}</h3> */}
         </div>
     </>
     );
