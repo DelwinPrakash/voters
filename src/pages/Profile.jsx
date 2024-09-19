@@ -1,10 +1,14 @@
 import React from "react";
+import { useAccount } from "wagmi";
+import { Navigate } from "react-router-dom";
 
 const Profile = () => {
-    
-    // if(!isWalletConnected){
-    //     return <Navigate to={'/'}/>
-    // }
+    const {address} = useAccount();
+    const isWalletConnected = Boolean(address);
+
+    if(!isWalletConnected){
+        return <Navigate to={'/'}/>
+    }
 
     return(
         <div>
